@@ -1,0 +1,9 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+.wrap{
+    background-image: url('../img/bg.png');
+    width: 1280px;
+    height: 800px;
+}

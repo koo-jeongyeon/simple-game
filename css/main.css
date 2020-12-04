@@ -1,0 +1,19 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+.wrap{
+    background-image: url('../img/bg.png');
+    width: 1280px;
+    height: 800px;
+}
+.block{
+    padding-top: 500px;
+
+}
+.start_button{
+    background-image: url('../img/start.png');
+    width: 200px;
+    height: 100px;
+    margin: 0 auto;
+}
