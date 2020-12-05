@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-   var card = new Array();
+    var card = new Array();
     var card_pattarn = 4;
     var card_number = 13;
 
@@ -11,13 +11,14 @@ $(document).ready(function(){
             card.push(pt+nm);
         }
     }
-
-    for(var k=0; k<card.length; k++){
-        console.log("card_"+K+":"+card[K]);
+    card = mix_card(card);
+    for(var l=0; l<card.length; l++){
+        console.log(card[l]);
     }
-
 });
-
+/*
+* 다이아, 하트, 클로버, 스페이스 4가지 패턴 문자로 변환
+*/
 function ch_pattarn(num){
     switch (num) {
         case 0 : num="D"; break;
@@ -27,6 +28,9 @@ function ch_pattarn(num){
     }
     return num;
 }
+/*
+* 카드의 숫자인 부분은 그대로 리턴, 문자인부분은 문자로 변환
+*/
 function ch_number(num){
     switch (num) {
         case 1 : num = "A"; break;
@@ -36,4 +40,20 @@ function ch_number(num){
         default : break;
     }
     return num;
+}
+/*
+* 카드를 섞어줌
+*/
+function mix_card(crd){
+    var rum1;
+    var rum2;
+    var temp;
+    for(var i=0; i<3; i++){
+        rum1 = Math.floor(Math.random() * crd.length);
+        rum2 = Math.floor(Math.random() * crd.length);
+        temp = crd[rum1];
+        crd[rum1] = crd[rum2];
+        crd[rum2] = temp;
+    }
+    return crd;
 }
