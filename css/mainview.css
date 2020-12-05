@@ -7,3 +7,17 @@ html,body{
     width: 1280px;
     height: 800px;
 }
+.col{
+    position: absolute;
+}
+.card{
+    display: inline-block;
+    width: 80px;
+    position: relative;
+    height: 110px;
+    overflow: hidden;
+    margin: 10px 10px 0px;
+}
+.card > img{
+  width: 100%;
+}

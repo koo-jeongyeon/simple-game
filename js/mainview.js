@@ -12,9 +12,26 @@ $(document).ready(function(){
         }
     }
     card = mix_card(card);
-    for(var l=0; l<card.length; l++){
-        console.log(card[l]);
+
+    var pickcard_count = 20;
+    var pik_card = new Array();
+    for(var l=0; l<pickcard_count/2; l++){
+        var rum = Math.floor(Math.random() * card.length);
+        pik_card.push(card[rum]);
+        pik_card.push(card[rum]);
+
     }
+     pik_card = mix_card(pik_card);
+
+    var output = "";
+    for(var r=0; r<pik_card.length; r++){
+        output += "<div class='card' data-card='"+pik_card[r]+"'>";
+        output += "<img src=\"../img/"+pik_card[r]+".png\"/>";
+        output += "</div>";
+    }
+
+    $('.col').append(output);
+
 });
 /*
 * 다이아, 하트, 클로버, 스페이스 4가지 패턴 문자로 변환
@@ -48,7 +65,7 @@ function mix_card(crd){
     var rum1;
     var rum2;
     var temp;
-    for(var i=0; i<3; i++){
+    for(var i=0; i<100; i++){
         rum1 = Math.floor(Math.random() * crd.length);
         rum2 = Math.floor(Math.random() * crd.length);
         temp = crd[rum1];
