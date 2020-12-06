@@ -26,7 +26,8 @@ $(document).ready(function(){
     var output = "";
     for(var r=0; r<pik_card.length; r++){
         output += "<div class='card' data-card='"+pik_card[r]+"'>";
-        output += "<img src=\"../img/"+pik_card[r]+".png\"/>";
+        output += "<img class='front' src=\"../img/"+pik_card[r]+".png\"/>";
+        output += "<img class='back' src=\"../img/ZBACK.png\"/>";
         output += "</div>";
     }
 
