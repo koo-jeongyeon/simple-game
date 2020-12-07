@@ -1,9 +1,12 @@
+var score = 0;
+var pick = new Array();
+
 $(document).ready(function(){
 
     var card = new Array();
+    var pick_cardnum = new Array();
     var card_pattarn = 4;
     var card_number = 13;
-    var pick = new Array();
 
     for(var i=0; i<card_pattarn; i++){
         for(var j=1; j<(card_number+1); j++){
@@ -17,7 +20,14 @@ $(document).ready(function(){
     var pickcard_count = 20;
     var pik_card = new Array();
     for(var l=0; l<pickcard_count/2; l++){
+
         var rum = Math.floor(Math.random() * card.length);
+
+        while($.inArray(rum, pick_cardnum) != -1){
+            rum = Math.floor(Math.random() * card.length);
+        }
+        pick_cardnum.push(rum);
+
         pik_card.push(card[rum]);
         pik_card.push(card[rum]);
 
@@ -39,17 +49,18 @@ $(document).ready(function(){
     * 카드 눌러서 뒤집기
     */
     $('.card').click(function(){
-       var type = $(this).attr('card-state');
-        console.log(type);
+       var type = $(this).attr('data-card-state');
         if(type == 'back'){
-             $(this).children('.front').attr('class','front in');
+              $(this).children('.front').attr('class','front in');
             $(this).children('.back').attr('class','back out');
-            $(this).attr('card-state','front');
+            $(this).attr('data-card-state','front');
+            cardpush($(this).attr('data-card'));
         }else if(type == 'front'){
             $(this).children('.front').attr('class','front out');
             $(this).children('.back').attr('class','back in');
-            $(this).attr('card-state','back');
+            $(this).attr('data-card-state','back');
         }
+
     });
 });
 
@@ -59,7 +70,43 @@ $(document).ready(function(){
 function cardback_show(){
     $('.card').children('.front').attr('class','front out');
     $('.card').children('.back').attr('class','back in');
-    $('.card').attr('card-state','back');
+    $('.card').attr('data-card-state','back');
+}
+function card_back(){
+    $('[data-card='+pick[0]+']').children('.front').attr('class','front out');
+            $('[data-card='+pick[0]+']').children('.back').attr('class','back in');
+            $('[data-card='+pick[0]+']').attr('data-card-state','back');
+
+            $('[data-card='+pick[1]+']').children('.front').attr('class','front out');
+            $('[data-card='+pick[1]+']').children('.back').attr('class','back in');
+            $('[data-card='+pick[1]+']').attr('data-card-state','back');
+              pick = [];
+}
+/*
+* 카드 추가
+*/
+function cardpush(card){
+
+    if(pick.length < 2){
+     pick.push(card);
+    }
+    console.log("pick:" + pick);
+    console.log("picklen:" + pick.length);
+    console.log("첫번째값:" + pick[0]);
+    if(pick[1]){
+        console.log("두번째값:" + pick[1]);
+        if(pick[0]==pick[1]){
+            score++;
+            pick = [];
+        }else{
+            setTimeout(card_back,500);
+
+
+        }
+    }
+
+    console.log("score:" + score);
+    $('.score').val(score);
 }
 /*
 * 다이아, 하트, 클로버, 스페이스 4가지 패턴 문자로 변환
