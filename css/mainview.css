@@ -29,13 +29,23 @@ html,body{
   width: 100%;
   position: absolute;
   z-index: 10;
-  animation: cardout 1s linear forwards;
+
 }
 .card > .back{
   width: 100%;
   position: absolute;
+}
+
+.out{
+  z-index: 10;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-name: cardout;
+}
+
+.in{
   z-index: 0;
-    opacity: 0;
+  opacity: 0;
   animation-delay: 1s;
   animation-fill-mode: forwards;
   animation-duration: 1s;
@@ -44,7 +54,6 @@ html,body{
 
 @keyframes cardout{
     0% {
-        z-index: 10;
         transform: rotateY(0);
     }
     100% {
@@ -54,7 +63,6 @@ html,body{
 }
 @keyframes cardin{
     0% {
-        z-index: 0;
         transform: rotateY(90deg);
     }
     100%{

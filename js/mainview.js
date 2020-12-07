@@ -33,7 +33,15 @@ $(document).ready(function(){
 
     $('.col').append(output);
 
+    setTimeout(cardback_show,3000);
 });
+/*
+* 카드 뒤집기
+*/
+function cardback_show(){
+    $('.card').children('.front').attr('class','front out');
+    $('.card').children('.back').attr('class','back in');
+}
 /*
 * 다이아, 하트, 클로버, 스페이스 4가지 패턴 문자로 변환
 */
