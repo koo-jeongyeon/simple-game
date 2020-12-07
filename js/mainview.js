@@ -3,6 +3,7 @@ $(document).ready(function(){
     var card = new Array();
     var card_pattarn = 4;
     var card_number = 13;
+    var pick = new Array();
 
     for(var i=0; i<card_pattarn; i++){
         for(var j=1; j<(card_number+1); j++){
@@ -34,13 +35,31 @@ $(document).ready(function(){
     $('.col').append(output);
 
     setTimeout(cardback_show,3000);
+    /*
+    * 카드 눌러서 뒤집기
+    */
+    $('.card').click(function(){
+       var type = $(this).attr('card-state');
+        console.log(type);
+        if(type == 'back'){
+             $(this).children('.front').attr('class','front in');
+            $(this).children('.back').attr('class','back out');
+            $(this).attr('card-state','front');
+        }else if(type == 'front'){
+            $(this).children('.front').attr('class','front out');
+            $(this).children('.back').attr('class','back in');
+            $(this).attr('card-state','back');
+        }
+    });
 });
+
 /*
 * 카드 뒤집기
 */
 function cardback_show(){
     $('.card').children('.front').attr('class','front out');
     $('.card').children('.back').attr('class','back in');
+    $('.card').attr('card-state','back');
 }
 /*
 * 다이아, 하트, 클로버, 스페이스 4가지 패턴 문자로 변환

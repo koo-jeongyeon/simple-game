@@ -39,16 +39,16 @@ html,body{
 .out{
   z-index: 10;
   animation-fill-mode: forwards;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-name: cardout;
 }
 
 .in{
   z-index: 0;
   opacity: 0;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
   animation-fill-mode: forwards;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-name: cardin;
 }
 
