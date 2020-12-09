@@ -71,3 +71,11 @@ html,body{
         transform: rotateY(0);
     }
 }
+.popup{
+    /*display: none;*/
+    margin: 0 auto;
+    background-image: url('../img/popup.png');
+}
+.restart{
+     background-image: url('../img/restartbtn.png');
+}
